@@ -138,7 +138,7 @@ namespace Server_TTO
             {
                 buttons[i].Text = "";
             }
-            byte[] data= data = Encoding.Unicode.GetBytes("wwfwon");            
+            byte[] data= data = Encoding.Unicode.GetBytes("won");            
             for (int i = 0; i < clients.Count; i++)
             {
                 clients[i].Stream.Write(data, 0, data.Length); //передача данных
