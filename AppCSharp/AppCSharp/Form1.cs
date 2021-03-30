@@ -17,7 +17,6 @@ namespace AppCSharp
 {
     public partial class Form1 : Form
     {
-        private bool Turn = false;
         private string type;
         static string I;
         static string V;
@@ -26,10 +25,7 @@ namespace AppCSharp
         private const int port = 8888;
         static TcpClient client;
         static NetworkStream stream;
-        private int x = 12, y = 12;
-        private int[] temp = new int[8] {0,0,0,0,0,0,0,0};
         private Button[,] buttons =new Button[3,3];
-        private int player;
         public Form1()
         {
             InitializeComponent();
@@ -38,12 +34,9 @@ namespace AppCSharp
         }
         static void SendMessage(object sender)
         {
-            //Console.WriteLine("Введите сообщение: ");
-           
                 string message=sender.GetType().GetProperty("Text").GetValue(sender).ToString()+"|"+sender.GetType().GetProperty("Name").GetValue(sender).ToString();
                 byte[] data = Encoding.Unicode.GetBytes(message);
-                stream.Write(data, 0, data.Length);
-            
+                stream.Write(data, 0, data.Length);           
         }
         // получение сообщений
         private void ReceiveMessage()
@@ -73,13 +66,6 @@ namespace AppCSharp
                         case "Ваш ход":
                             {
                                 label1.Text = message;
-                                /*for (int i = 0; i < buttons.Length / 3; i++)
-                                {
-                                    for (int j = 0; j < buttons.Length / 3; j++)
-                                    {
-                                        buttons[i, j].Enabled = true;
-                                    }
-                                }*/
                                 for (int i = 0; i < 3; i++)
                                 {
                                     for (int j = 0; j < 3; j++)
@@ -92,13 +78,6 @@ namespace AppCSharp
                         case "Ждите":
                             {
                                 label1.Text = message;
-                                /*for (int i = 0; i < buttons.Length / 3; i++)
-                                {
-                                    for (int j = 0; j < buttons.Length / 3; j++)
-                                    {
-                                        buttons[i, j].Enabled = false;
-                                    }
-                                }*/
                                 for (int i = 0; i < 3; i++)
                                 {
                                     for (int j = 0; j < 3; j++)
@@ -163,7 +142,6 @@ namespace AppCSharp
                     if (message.Contains('|'))
                     {
                         String[] words = message.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-                        //message = String.Format("{0}: {1}", userName, message);
                         I = words[1];
                         V = words[0];
                         for (int i = 0; i < buttons.Length / 3; i++)
@@ -177,7 +155,6 @@ namespace AppCSharp
                                 }
                             }
                         }
-                        //Console.WriteLine(message);//вывод сообщения
                     }
                 }
                 catch
@@ -239,9 +216,7 @@ namespace AppCSharp
                     break;
             }*/
             sender.GetType().GetProperty("Enabled").SetValue(sender, false);
-            temp[Convert.ToInt32(sender.GetType().GetProperty("Name").GetValue(sender))] = 0;
             SendMessage(sender);
-            //checkWin();
         }       
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -277,9 +252,7 @@ namespace AppCSharp
                 // Disconnect();
             }
             this.Height = 700;
-            this.Width = 900;
-            player = 1;
-           
+            this.Width = 900;           
             for (int i = 0, id = 0; i < buttons.Length / 3; i++)
             {
                 for (int j = 0; j < buttons.Length / 3; j++)
