@@ -42,7 +42,6 @@ namespace Server_TTO
                 // в бесконечном цикле получаем сообщения от клиента
                 while (true)
                 {
-
                     try
                     {
                         message = GetMessage();
@@ -52,7 +51,7 @@ namespace Server_TTO
                         V = words[0];
                         server.buttons[I].Text = V;
                         Console.WriteLine(message);
-                       // server.BroadcastMessage(message, this.Id);
+                        server.BroadcastMessage(message, this.Id);
                         server.checkWin();
                     }
                     catch
