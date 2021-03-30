@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Server_TTO
 {
@@ -38,27 +40,66 @@ namespace Server_TTO
                 message = userName + " вошел в игру";
                 // посылаем сообщение о входе в чат всем подключенным пользователям
                 server.BroadcastMessage(message, this.Id);
-                Console.WriteLine(message);
                 // в бесконечном цикле получаем сообщения от клиента
                 while (true)
                 {
                     try
                     {
-                        if (server.player == 2)
+                        if (server.player == 2 && server.start)
                         {
                             server.UniversalMessage("Ваш ход", 0);
+                            Thread.Sleep(50);
                             server.UniversalMessage("Ждите", 1);
+                            Thread.Sleep(50);
+                            server.UniversalMessage("X", 0);
+                            Thread.Sleep(50);
+                            server.UniversalMessage("O", 1);
+                            Thread.Sleep(50);
+                            server.start = false;
                         }
                         message = GetMessage();
-                        String[] words = message.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                        //message = String.Format("{0}: {1}", userName, message);
-                        I = Convert.ToInt32(words[1]);
-                        V = words[0];
-                        server.buttons[I].Text = V;
-                        Console.WriteLine(message);
-                        server.BroadcastMessage(message, this.Id);
-                        server.checkWin();
-                       
+                        if (message.Contains('|'))
+                        {
+                            String[] words = message.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+                            //message = String.Format("{0}: {1}", userName, message);
+                            I = Convert.ToInt32(words[1]);
+                            V = words[0];
+                            server.buttons[I].Text = V;
+                            server.BroadcastMessage(message, this.Id);
+                            server.checkWin();
+                            switch (server.Turn)
+                            {
+                                case "X":
+                                    {
+                                       // server.clients[0].type = "O";
+                                        server.UniversalMessage("Ждите", 0);
+                                        Thread.Sleep(50);
+                                        server.UniversalMessage("Ваш ход", 1);
+                                        Thread.Sleep(50);
+                                        /*server.UniversalMessage("X", 1);
+                                        Thread.Sleep(50);
+                                        server.UniversalMessage("O", 0);
+                                        Thread.Sleep(50);*/
+                                        server.Turn = "O";
+                                        break;
+                                    }
+                                case "O":
+                                    {
+                                        //server.clients[1].type = "X";
+                                        server.UniversalMessage("Ждите", 1);
+                                        Thread.Sleep(50);
+                                        server.UniversalMessage("Ваш ход", 0);
+                                        Thread.Sleep(50);
+                                        /*server.UniversalMessage("X", 0);
+                                        Thread.Sleep(50);
+                                        server.UniversalMessage("O", 1);
+                                        Thread.Sleep(50);*/
+                                        server.Turn = "X";
+                                        break;
+                                    }
+                            }
+
+                        }
                     }
                     catch
                     {
@@ -102,7 +143,6 @@ namespace Server_TTO
                 builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
             }
             while (Stream.DataAvailable);
-
             return builder.ToString();
         }
 
