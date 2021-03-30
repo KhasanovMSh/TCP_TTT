@@ -13,10 +13,11 @@ namespace Server_TTO
     {
         public int player=0;
         private string playerX="X";
-        private string playerO = "Y";
-        private string Turn = "X";
+        private string playerO = "O";
+        public string Turn = "X";
         private bool yourTurn = false;
         public bool won = false;
+        public bool start = true;
         internal Button[] buttons = new Button[9];
         static TcpListener tcpListener; // сервер для прослушивания
         public List<ClientObject> clients = new List<ClientObject>(); // все подключения
@@ -100,7 +101,7 @@ namespace Server_TTO
             byte[] data = Encoding.Unicode.GetBytes(message);
                     clients[i].Stream.Write(data, 0, data.Length); //передача данных
         }
-        protected internal void WonMessage(string message, string id)
+        /*protected internal void WonMessage(string message, string id)
         {
             byte[] data = Encoding.Unicode.GetBytes("Вы выиграли X");
             for (int i = 0; i < clients.Count; i++)
@@ -121,7 +122,7 @@ namespace Server_TTO
                     clients[i].Stream.Write(data, 0, data.Length); //передача данных
                 }
             }
-        }
+        }*/
         // отключение всех клиентов
         protected internal void Disconnect()
         {
@@ -139,11 +140,21 @@ namespace Server_TTO
             {
                 buttons[i].Text = "";
             }
-            byte[] data= data = Encoding.Unicode.GetBytes("clear");            
+            byte[] data = Encoding.Unicode.GetBytes("clear");            
             for (int i = 0; i < clients.Count; i++)
             {
                 clients[i].Stream.Write(data, 0, data.Length); //передача данных
             }
+            Thread.Sleep(50);
+            if (won)
+            {
+                data = Encoding.Unicode.GetBytes("Победили " + Turn);
+                for (int i = 0; i < clients.Count; i++)
+                {
+                    clients[i].Stream.Write(data, 0, data.Length); //передача данных
+                }
+            }
+            Thread.Sleep(50);
             won = false;          
         }
         protected internal void checkWin()
@@ -153,7 +164,7 @@ namespace Server_TTO
                 if (buttons[0].Text != "")
                 {
                     won = true;
-                    Console.WriteLine("Вы победили");
+                    Console.WriteLine("Победили "+Turn);
                     ClearTable();
                 }
             }
@@ -162,7 +173,7 @@ namespace Server_TTO
                 if (buttons[3].Text != "") 
                 { 
                     won = true;
-                Console.WriteLine("Вы победили");
+                    Console.WriteLine("Победили " + Turn);
                     ClearTable();
                 }
             }
@@ -171,7 +182,7 @@ namespace Server_TTO
                 if (buttons[6].Text != "")
                 {
                     won = true;
-                    Console.WriteLine("Вы победили");
+                    Console.WriteLine("Победили " + Turn);
                     ClearTable();
                 }
             }
@@ -179,7 +190,7 @@ namespace Server_TTO
             {
                 if (buttons[0].Text != "")
                 {
-                    Console.WriteLine("Вы победили");
+                    Console.WriteLine("Победили " + Turn);
                     ClearTable();
                 }
             }
@@ -187,7 +198,7 @@ namespace Server_TTO
             {
                 if (buttons[1].Text != "")
                 {
-                    Console.WriteLine("Вы победили");
+                    Console.WriteLine("Победили " + Turn);
                     ClearTable();
                 }
             }
@@ -195,7 +206,7 @@ namespace Server_TTO
             {
                 if (buttons[2].Text != "")
                 {
-                    Console.WriteLine("Вы победили");
+                    Console.WriteLine("Победили " + Turn);
                     ClearTable();
                 }
             }
@@ -203,7 +214,7 @@ namespace Server_TTO
             {
                 if (buttons[0].Text != "")
                 {
-                    Console.WriteLine("Вы победили");
+                    Console.WriteLine("Победили " + Turn);
                     ClearTable();
                 }
             }
@@ -211,7 +222,7 @@ namespace Server_TTO
             {
                 if (buttons[2].Text != "")
                 {
-                    Console.WriteLine("Вы победили");
+                    Console.WriteLine("Победили " + Turn);
                     ClearTable();
                 }
             }
