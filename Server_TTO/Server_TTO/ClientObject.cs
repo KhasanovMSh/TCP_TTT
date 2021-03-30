@@ -44,6 +44,11 @@ namespace Server_TTO
                 {
                     try
                     {
+                        if (server.player == 2)
+                        {
+                            server.UniversalMessage("Ваш ход", 0);
+                            server.UniversalMessage("Ждите", 1);
+                        }
                         message = GetMessage();
                         String[] words = message.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                         //message = String.Format("{0}: {1}", userName, message);
@@ -53,6 +58,7 @@ namespace Server_TTO
                         Console.WriteLine(message);
                         server.BroadcastMessage(message, this.Id);
                         server.checkWin();
+                       
                     }
                     catch
                     {

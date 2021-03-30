@@ -14,6 +14,7 @@ namespace Server_TTO
         public int player=0;
         private string playerX="X";
         private string playerO = "Y";
+        private string Turn = "X";
         private bool yourTurn = false;
         public bool won = false;
         internal Button[] buttons = new Button[9];
@@ -54,7 +55,9 @@ namespace Server_TTO
                         ClientObject clientObject = new ClientObject(tcpClient, this, "X");
                         Thread clientThread = new Thread(new ThreadStart(clientObject.Process));
                         clientThread.Start();
+                        
                         Console.WriteLine(clients[0].type);
+                        //UniversalMessage("Ваш ход", 0);
                         player++;
                     }
                     if (player == 1)
@@ -63,6 +66,7 @@ namespace Server_TTO
                         ClientObject clientObject = new ClientObject(tcpClient, this, "O");
                         Thread clientThread = new Thread(new ThreadStart(clientObject.Process));
                         clientThread.Start();
+                        //UniversalMessage("Ждите",1);
                         Console.WriteLine(clients[1].type);
                         player++;
                     }
@@ -91,13 +95,10 @@ namespace Server_TTO
                 }
             }
         }
-        protected internal void UniversalMessage(string message)
+        protected internal void UniversalMessage(string message,int i)
         {
             byte[] data = Encoding.Unicode.GetBytes(message);
-            for (int i = 0; i < clients.Count; i++)
-            {
                     clients[i].Stream.Write(data, 0, data.Length); //передача данных
-            }
         }
         protected internal void WonMessage(string message, string id)
         {
@@ -138,7 +139,7 @@ namespace Server_TTO
             {
                 buttons[i].Text = "";
             }
-            byte[] data= data = Encoding.Unicode.GetBytes("won");            
+            byte[] data= data = Encoding.Unicode.GetBytes("clear");            
             for (int i = 0; i < clients.Count; i++)
             {
                 clients[i].Stream.Write(data, 0, data.Length); //передача данных

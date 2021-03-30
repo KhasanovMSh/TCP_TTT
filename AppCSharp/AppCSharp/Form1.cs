@@ -75,6 +75,29 @@ namespace AppCSharp
                         MessageBox.Show("Вы проиграли");
                         clearButtons();
                     }
+                    else if (message == "Ваш ход")
+                    {
+                        label1.Text = message;
+                        for (int i = 0; i < buttons.Length / 3; i++)
+                        {
+                            for (int j = 0; j < buttons.Length / 3; j++)
+                            {            
+                                    buttons[i, j].Enabled = true;
+                            }
+                        }
+                    }
+                    else if (message == "Ждите")
+                    {
+                        label1.Text = message;
+                        for (int i = 0; i < buttons.Length / 3; i++)
+                        {
+                            for (int j = 0; j < buttons.Length / 3; j++)
+                            {
+                                    buttons[i, j].Enabled = false;
+                            }
+                        }
+
+                    }
                     else
                     {
                         String[] words = message.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -91,7 +114,6 @@ namespace AppCSharp
                                     buttons[i, j].Enabled = false;
                                 }
                             }
-
                         }
                         Console.WriteLine(message);//вывод сообщения
                     }
@@ -194,7 +216,7 @@ namespace AppCSharp
             this.Height = 700;
             this.Width = 900;
             player = 1;
-            label1.Text = "Текущий ход: Игрок 1";
+           
             for (int i = 0, id = 0; i < buttons.Length / 3; i++)
             {
                 for (int j = 0; j < buttons.Length / 3; j++)
