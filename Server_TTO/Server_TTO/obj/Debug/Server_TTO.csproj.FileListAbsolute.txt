@@ -1,0 +1,14 @@
+C:\Users\user\source\repos\Server_TTO\Server_TTO\obj\Debug\Server_TTO.csprojAssemblyReference.cache
+C:\Users\user\source\repos\Server_TTO\Server_TTO\obj\Debug\Server_TTO.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\Server_TTO\Server_TTO\bin\Debug\Server_TTO.exe.config
+C:\Users\user\source\repos\Server_TTO\Server_TTO\bin\Debug\Server_TTO.exe
+C:\Users\user\source\repos\Server_TTO\Server_TTO\bin\Debug\Server_TTO.pdb
+C:\Users\user\source\repos\Server_TTO\Server_TTO\obj\Debug\Server_TTO.exe
+C:\Users\user\source\repos\Server_TTO\Server_TTO\obj\Debug\Server_TTO.pdb
+C:\Users\user\source\repos\TCP_TTT\Server_TTO\Server_TTO\bin\Debug\Server_TTO.exe.config
+C:\Users\user\source\repos\TCP_TTT\Server_TTO\Server_TTO\bin\Debug\Server_TTO.exe
+C:\Users\user\source\repos\TCP_TTT\Server_TTO\Server_TTO\bin\Debug\Server_TTO.pdb
+C:\Users\user\source\repos\TCP_TTT\Server_TTO\Server_TTO\obj\Debug\Server_TTO.csprojAssemblyReference.cache
+C:\Users\user\source\repos\TCP_TTT\Server_TTO\Server_TTO\obj\Debug\Server_TTO.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\TCP_TTT\Server_TTO\Server_TTO\obj\Debug\Server_TTO.exe
+C:\Users\user\source\repos\TCP_TTT\Server_TTO\Server_TTO\obj\Debug\Server_TTO.pdb

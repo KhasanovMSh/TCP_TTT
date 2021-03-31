@@ -1,0 +1,49 @@
+c:\users\sodrk\documents\visual studio 2015\Projects\AppCSharp\AppCSharp\bin\Debug\AppCSharp.exe.config
+c:\users\sodrk\documents\visual studio 2015\Projects\AppCSharp\AppCSharp\bin\Debug\AppCSharp.exe
+c:\users\sodrk\documents\visual studio 2015\Projects\AppCSharp\AppCSharp\bin\Debug\AppCSharp.pdb
+c:\users\sodrk\documents\visual studio 2015\Projects\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csprojResolveAssemblyReference.cache
+c:\users\sodrk\documents\visual studio 2015\Projects\AppCSharp\AppCSharp\obj\Debug\AppCSharp.Form1.resources
+c:\users\sodrk\documents\visual studio 2015\Projects\AppCSharp\AppCSharp\obj\Debug\AppCSharp.Properties.Resources.resources
+c:\users\sodrk\documents\visual studio 2015\Projects\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csproj.GenerateResource.Cache
+c:\users\sodrk\documents\visual studio 2015\Projects\AppCSharp\AppCSharp\obj\Debug\AppCSharp.exe
+c:\users\sodrk\documents\visual studio 2015\Projects\AppCSharp\AppCSharp\obj\Debug\AppCSharp.pdb
+C:\Users\user\Downloads\CSharpProjects-master\CSharpProjects-master\AppCSharp\AppCSharp\bin\Debug\AppCSharp.exe.config
+C:\Users\user\Downloads\CSharpProjects-master\CSharpProjects-master\AppCSharp\AppCSharp\bin\Debug\AppCSharp.exe
+C:\Users\user\Downloads\CSharpProjects-master\CSharpProjects-master\AppCSharp\AppCSharp\bin\Debug\AppCSharp.pdb
+C:\Users\user\Downloads\CSharpProjects-master\CSharpProjects-master\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csprojAssemblyReference.cache
+C:\Users\user\Downloads\CSharpProjects-master\CSharpProjects-master\AppCSharp\AppCSharp\obj\Debug\AppCSharp.Form1.resources
+C:\Users\user\Downloads\CSharpProjects-master\CSharpProjects-master\AppCSharp\AppCSharp\obj\Debug\AppCSharp.Properties.Resources.resources
+C:\Users\user\Downloads\CSharpProjects-master\CSharpProjects-master\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csproj.GenerateResource.cache
+C:\Users\user\Downloads\CSharpProjects-master\CSharpProjects-master\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csproj.CoreCompileInputs.cache
+C:\Users\user\Downloads\CSharpProjects-master\CSharpProjects-master\AppCSharp\AppCSharp\obj\Debug\AppCSharp.exe
+C:\Users\user\Downloads\CSharpProjects-master\CSharpProjects-master\AppCSharp\AppCSharp\obj\Debug\AppCSharp.pdb
+D:\Word\3 курс\ВЕСЕННИЙ СЕМЕСТР\Учебная практика\AppCSharp\AppCSharp\bin\Debug\AppCSharp.exe.config
+D:\Word\3 курс\ВЕСЕННИЙ СЕМЕСТР\Учебная практика\AppCSharp\AppCSharp\bin\Debug\AppCSharp.exe
+D:\Word\3 курс\ВЕСЕННИЙ СЕМЕСТР\Учебная практика\AppCSharp\AppCSharp\bin\Debug\AppCSharp.pdb
+D:\Word\3 курс\ВЕСЕННИЙ СЕМЕСТР\Учебная практика\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csprojAssemblyReference.cache
+D:\Word\3 курс\ВЕСЕННИЙ СЕМЕСТР\Учебная практика\AppCSharp\AppCSharp\obj\Debug\AppCSharp.Form1.resources
+D:\Word\3 курс\ВЕСЕННИЙ СЕМЕСТР\Учебная практика\AppCSharp\AppCSharp\obj\Debug\AppCSharp.Properties.Resources.resources
+D:\Word\3 курс\ВЕСЕННИЙ СЕМЕСТР\Учебная практика\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csproj.GenerateResource.cache
+D:\Word\3 курс\ВЕСЕННИЙ СЕМЕСТР\Учебная практика\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csproj.CoreCompileInputs.cache
+D:\Word\3 курс\ВЕСЕННИЙ СЕМЕСТР\Учебная практика\AppCSharp\AppCSharp\obj\Debug\AppCSharp.exe
+D:\Word\3 курс\ВЕСЕННИЙ СЕМЕСТР\Учебная практика\AppCSharp\AppCSharp\obj\Debug\AppCSharp.pdb
+C:\Users\user\source\repos\AppCSharp\AppCSharp\bin\Debug\AppCSharp.exe.config
+C:\Users\user\source\repos\AppCSharp\AppCSharp\bin\Debug\AppCSharp.exe
+C:\Users\user\source\repos\AppCSharp\AppCSharp\bin\Debug\AppCSharp.pdb
+C:\Users\user\source\repos\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csprojAssemblyReference.cache
+C:\Users\user\source\repos\AppCSharp\AppCSharp\obj\Debug\AppCSharp.Form1.resources
+C:\Users\user\source\repos\AppCSharp\AppCSharp\obj\Debug\AppCSharp.Properties.Resources.resources
+C:\Users\user\source\repos\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csproj.GenerateResource.cache
+C:\Users\user\source\repos\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\AppCSharp\AppCSharp\obj\Debug\AppCSharp.exe
+C:\Users\user\source\repos\AppCSharp\AppCSharp\obj\Debug\AppCSharp.pdb
+C:\Users\user\source\repos\TCP_TTT\AppCSharp\AppCSharp\bin\Debug\AppCSharp.exe.config
+C:\Users\user\source\repos\TCP_TTT\AppCSharp\AppCSharp\bin\Debug\AppCSharp.exe
+C:\Users\user\source\repos\TCP_TTT\AppCSharp\AppCSharp\bin\Debug\AppCSharp.pdb
+C:\Users\user\source\repos\TCP_TTT\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csprojAssemblyReference.cache
+C:\Users\user\source\repos\TCP_TTT\AppCSharp\AppCSharp\obj\Debug\AppCSharp.Form1.resources
+C:\Users\user\source\repos\TCP_TTT\AppCSharp\AppCSharp\obj\Debug\AppCSharp.Properties.Resources.resources
+C:\Users\user\source\repos\TCP_TTT\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csproj.GenerateResource.cache
+C:\Users\user\source\repos\TCP_TTT\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\TCP_TTT\AppCSharp\AppCSharp\obj\Debug\AppCSharp.exe
+C:\Users\user\source\repos\TCP_TTT\AppCSharp\AppCSharp\obj\Debug\AppCSharp.pdb
