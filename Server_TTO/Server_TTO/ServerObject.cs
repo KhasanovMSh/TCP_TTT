@@ -17,7 +17,7 @@ namespace Server_TTO
         public string Turn = "X";
         private bool yourTurn = false;
         public bool won = false;
-        public bool start = true;
+        public bool newgame = true;
         internal Button[] buttons = new Button[9];
         static TcpListener tcpListener; // сервер для прослушивания
         public List<ClientObject> clients = new List<ClientObject>(); // все подключения
@@ -157,73 +157,68 @@ namespace Server_TTO
             Thread.Sleep(50);
             won = false;          
         }
+        protected internal void Win()
+        {
+            won = true;
+            Console.WriteLine("Победили " + Turn);
+            ClearTable();
+        }
         protected internal void checkWin()
         {
             if (buttons[0].Text==buttons[1].Text && buttons[1].Text == buttons[2].Text)
             {
                 if (buttons[0].Text != "")
                 {
-                    won = true;
-                    Console.WriteLine("Победили "+Turn);
-                    ClearTable();
+                    Win();
                 }
             }
             if (buttons[3].Text == buttons[4].Text && buttons[4].Text == buttons[5].Text)
             {
                 if (buttons[3].Text != "") 
-                { 
-                    won = true;
-                    Console.WriteLine("Победили " + Turn);
-                    ClearTable();
+                {
+                    Win();
                 }
             }
             if (buttons[6].Text == buttons[7].Text && buttons[7].Text == buttons[8].Text)
             {
                 if (buttons[6].Text != "")
                 {
-                    won = true;
-                    Console.WriteLine("Победили " + Turn);
-                    ClearTable();
+                    Win();
                 }
             }
             if (buttons[0].Text == buttons[3].Text && buttons[3].Text == buttons[6].Text)
             {
                 if (buttons[0].Text != "")
                 {
-                    Console.WriteLine("Победили " + Turn);
-                    ClearTable();
+                    Win();
                 }
             }
             if (buttons[1].Text == buttons[4].Text && buttons[4].Text == buttons[7].Text)
             {
                 if (buttons[1].Text != "")
                 {
-                    Console.WriteLine("Победили " + Turn);
-                    ClearTable();
+                    Win();
                 }
             }
             if (buttons[2].Text == buttons[5].Text && buttons[5].Text == buttons[8].Text)
             {
                 if (buttons[2].Text != "")
                 {
-                    Console.WriteLine("Победили " + Turn);
-                    ClearTable();
+                    Win();
                 }
             }
             if (buttons[0].Text == buttons[4].Text && buttons[4].Text == buttons[8].Text)
             {
                 if (buttons[0].Text != "")
                 {
-                    Console.WriteLine("Победили " + Turn);
-                    ClearTable();
+                    Win();
                 }
             }
             if (buttons[2].Text == buttons[4].Text && buttons[4].Text == buttons[6].Text)
             {
                 if (buttons[2].Text != "")
                 {
-                    Console.WriteLine("Победили " + Turn);
-                    ClearTable();
+                    Win();
                 }
             }
         }

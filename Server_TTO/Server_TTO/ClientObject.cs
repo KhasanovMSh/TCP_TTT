@@ -45,7 +45,7 @@ namespace Server_TTO
                 {
                     try
                     {
-                        if (server.player == 2 && server.start)
+                        if (server.player == 2 && server.newgame)
                         {
                             server.UniversalMessage("Ваш ход", 0);
                             Thread.Sleep(50);
@@ -55,18 +55,23 @@ namespace Server_TTO
                             Thread.Sleep(50);
                             server.UniversalMessage("O", 1);
                             Thread.Sleep(50);
-                            server.start = false;
+                            server.newgame = false;
                         }
                         message = GetMessage();
                         if (message.Contains('|'))
                         {
                             String[] words = message.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-                            //message = String.Format("{0}: {1}", userName, message);
                             I = Convert.ToInt32(words[1]);
                             V = words[0];
                             server.buttons[I].Text = V;
                             server.BroadcastMessage(message, this.Id);
                             server.checkWin();
+                            if(server.buttons[0].Text!="" && server.buttons[1].Text != "" && server.buttons[2].Text != "" 
+                                && server.buttons[3].Text != "" && server.buttons[4].Text != "" && server.buttons[5].Text != "" 
+                                && server.buttons[6].Text != "" && server.buttons[7].Text != "" && server.buttons[8].Text != "")
+                            {
+                                server.ClearTable();
+                            }
                             switch (server.Turn)
                             {
                                 case "X":
@@ -121,9 +126,11 @@ namespace Server_TTO
                 if (server.player == 2 && this.Id == server.clients[0].Id)
                 {
                     server.clients[0] = server.clients[1];
-                    server.clients[0].type = "X";
+                    server.clients.RemoveAt(1);
+                    //server.clients[0].type = "X";
                     Console.WriteLine(server.clients[0].userName);
                     Console.WriteLine(server.clients[0].type);
+                    server.newgame = true;
                 }
                 server.player--;
                 server.RemoveConnection(this.Id);
@@ -145,7 +152,6 @@ namespace Server_TTO
             while (Stream.DataAvailable);
             return builder.ToString();
         }
-
         // закрытие подключения
         protected internal void Close()
         {
