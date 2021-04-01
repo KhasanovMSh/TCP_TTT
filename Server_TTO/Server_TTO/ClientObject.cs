@@ -41,7 +41,6 @@ namespace Server_TTO
                 {
                     try
                     {
-                        Console.WriteLine("Кол-во игроков"+server.player);
                         if (message.Contains("logout"))
                         {
                             server.ClearTable();
@@ -132,24 +131,7 @@ namespace Server_TTO
             {
                 Console.WriteLine(e.Message);
             }
-            /*finally
-            {
-                server.ClearTable();
-                Console.WriteLine("АААААААААА");
-                // в случае выхода из цикла закрываем ресурсы
-                if (server.player == 2 && this.Id == server.clients[0].Id)
-                {
-                    server.clients[0] = server.clients[1];
-                    //server.clients.RemoveAt(1);
-                    //server.clients[0].type = "X";
-                    Console.WriteLine(server.clients[0].userName);
-                    Console.WriteLine(server.clients[0].type);                  
-                }               
-                //server.newgame = true;
-                server.player--;
-                server.RemoveConnection(this.Id);
-                Close();
-            }*/
+
         }
 
         // чтение входящего сообщения и преобразование в строку
