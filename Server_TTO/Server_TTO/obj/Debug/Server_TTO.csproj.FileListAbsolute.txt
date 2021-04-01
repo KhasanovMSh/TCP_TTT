@@ -12,3 +12,10 @@ C:\Users\user\source\repos\TCP_TTT\Server_TTO\Server_TTO\obj\Debug\Server_TTO.cs
 C:\Users\user\source\repos\TCP_TTT\Server_TTO\Server_TTO\obj\Debug\Server_TTO.csproj.CoreCompileInputs.cache
 C:\Users\user\source\repos\TCP_TTT\Server_TTO\Server_TTO\obj\Debug\Server_TTO.exe
 C:\Users\user\source\repos\TCP_TTT\Server_TTO\Server_TTO\obj\Debug\Server_TTO.pdb
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\Server_TTO\Server_TTO\bin\Debug\Server_TTO.exe.config
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\Server_TTO\Server_TTO\bin\Debug\Server_TTO.exe
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\Server_TTO\Server_TTO\bin\Debug\Server_TTO.pdb
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\Server_TTO\Server_TTO\obj\Debug\Server_TTO.csprojAssemblyReference.cache
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\Server_TTO\Server_TTO\obj\Debug\Server_TTO.csproj.CoreCompileInputs.cache
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\Server_TTO\Server_TTO\obj\Debug\Server_TTO.exe
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\Server_TTO\Server_TTO\obj\Debug\Server_TTO.pdb

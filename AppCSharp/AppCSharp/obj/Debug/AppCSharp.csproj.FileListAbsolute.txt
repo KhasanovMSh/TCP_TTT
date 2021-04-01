@@ -47,3 +47,13 @@ C:\Users\user\source\repos\TCP_TTT\AppCSharp\AppCSharp\obj\Debug\AppCSharp.cspro
 C:\Users\user\source\repos\TCP_TTT\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csproj.CoreCompileInputs.cache
 C:\Users\user\source\repos\TCP_TTT\AppCSharp\AppCSharp\obj\Debug\AppCSharp.exe
 C:\Users\user\source\repos\TCP_TTT\AppCSharp\AppCSharp\obj\Debug\AppCSharp.pdb
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\AppCSharp\AppCSharp\bin\Debug\AppCSharp.exe.config
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\AppCSharp\AppCSharp\bin\Debug\AppCSharp.exe
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\AppCSharp\AppCSharp\bin\Debug\AppCSharp.pdb
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csprojAssemblyReference.cache
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\AppCSharp\AppCSharp\obj\Debug\AppCSharp.Form1.resources
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\AppCSharp\AppCSharp\obj\Debug\AppCSharp.Properties.Resources.resources
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csproj.GenerateResource.cache
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\AppCSharp\AppCSharp\obj\Debug\AppCSharp.csproj.CoreCompileInputs.cache
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\AppCSharp\AppCSharp\obj\Debug\AppCSharp.exe
+D:\Study\Практика!\NewPraktik2021\TCP_TTT-mainREP\AppCSharp\AppCSharp\obj\Debug\AppCSharp.pdb

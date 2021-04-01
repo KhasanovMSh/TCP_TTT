@@ -29,6 +29,8 @@ namespace AppCSharp
         private Button[,] buttons =new Button[3,3];
         public Form1()
         {
+            this.Icon = AppCSharp.Properties.Resources.tic_tac_toe_39453;
+            this.BackgroundImage = AppCSharp.Properties.Resources.images;
             InitializeComponent();
         }
         static void SendMessage(object sender)
@@ -232,6 +234,16 @@ namespace AppCSharp
                 LogOut();
                 Disconnect();
             }           
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
