@@ -3,19 +3,16 @@ using System.Net;
 using System.Net.Sockets;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 using System.Threading;
 
 namespace Server_TTO
 {
     public class ClientObject
-    {
-      
+    {     
         protected internal string Id { get; private set; }
         protected internal string type { get; private set; }
         protected internal NetworkStream Stream { get; private set; }
         string userName;
-        private string playerType;
         int I;
         string V;
         TcpClient client;
@@ -38,13 +35,40 @@ namespace Server_TTO
                 string message = GetMessage();
                 userName = message;
                 message = userName + " вошел в игру";
-                // посылаем сообщение о входе в чат всем подключенным пользователям
-                server.BroadcastMessage(message, this.Id);
+                Console.WriteLine(message);
                 // в бесконечном цикле получаем сообщения от клиента
                 while (true)
                 {
                     try
                     {
+                        Console.WriteLine("Кол-во игроков"+server.player);
+                        if (message.Contains("logout"))
+                        {
+                            server.ClearTable();
+                            Thread.Sleep(50);
+                            message = String.Format("{0}: покинул игру", userName);
+                            Console.WriteLine(message);
+                            // в случае выхода из цикла закрываем ресурсы
+                            if (server.player == 2 && this.Id == server.clients[0].Id)
+                            {
+                                server.clients[0] = server.clients[1];
+                                server.clients[1] = null;
+                                server.clients.RemoveAt(1);
+                            }
+                            if (this.Id == server.clients[0].Id)
+                            {
+                                server.clients.RemoveAt(0);
+                            }
+                            if (this.Id == server.clients[1].Id)
+                            {
+                                server.clients.RemoveAt(1);
+                            }
+                            server.newgame = true;
+                            server.player--;
+                            Console.WriteLine("Кол-во игроков" + server.player);
+                            server.RemoveConnection(this.Id);
+                            Close();
+                        }
                         if (server.player == 2 && server.newgame)
                         {
                             server.UniversalMessage("Ваш ход", 0);
@@ -76,34 +100,23 @@ namespace Server_TTO
                             {
                                 case "X":
                                     {
-                                       // server.clients[0].type = "O";
                                         server.UniversalMessage("Ждите", 0);
                                         Thread.Sleep(50);
                                         server.UniversalMessage("Ваш ход", 1);
                                         Thread.Sleep(50);
-                                        /*server.UniversalMessage("X", 1);
-                                        Thread.Sleep(50);
-                                        server.UniversalMessage("O", 0);
-                                        Thread.Sleep(50);*/
                                         server.Turn = "O";
                                         break;
                                     }
                                 case "O":
                                     {
-                                        //server.clients[1].type = "X";
                                         server.UniversalMessage("Ждите", 1);
                                         Thread.Sleep(50);
                                         server.UniversalMessage("Ваш ход", 0);
                                         Thread.Sleep(50);
-                                        /*server.UniversalMessage("X", 0);
-                                        Thread.Sleep(50);
-                                        server.UniversalMessage("O", 1);
-                                        Thread.Sleep(50);*/
                                         server.Turn = "X";
                                         break;
                                     }
                             }
-
                         }
                     }
                     catch
@@ -111,7 +124,6 @@ namespace Server_TTO
                         server.ClearTable();
                         message = String.Format("{0}: покинул игру", userName);
                         Console.WriteLine(message);
-                        //server.BroadcastMessage(message, this.Id);
                         break;
                     }
                 }
@@ -120,22 +132,24 @@ namespace Server_TTO
             {
                 Console.WriteLine(e.Message);
             }
-            finally
+            /*finally
             {
+                server.ClearTable();
+                Console.WriteLine("АААААААААА");
                 // в случае выхода из цикла закрываем ресурсы
                 if (server.player == 2 && this.Id == server.clients[0].Id)
                 {
                     server.clients[0] = server.clients[1];
-                    server.clients.RemoveAt(1);
+                    //server.clients.RemoveAt(1);
                     //server.clients[0].type = "X";
                     Console.WriteLine(server.clients[0].userName);
-                    Console.WriteLine(server.clients[0].type);
-                    server.newgame = true;
-                }
+                    Console.WriteLine(server.clients[0].type);                  
+                }               
+                //server.newgame = true;
                 server.player--;
                 server.RemoveConnection(this.Id);
                 Close();
-            }
+            }*/
         }
 
         // чтение входящего сообщения и преобразование в строку

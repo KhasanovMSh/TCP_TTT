@@ -25,6 +25,7 @@ namespace Server_TTO
                 server.Disconnect();
                 Console.WriteLine(ex.Message);
             }
+            Console.ReadLine();
         }
     }
 }

@@ -12,10 +12,7 @@ namespace Server_TTO
     public class ServerObject
     {
         public int player=0;
-        private string playerX="X";
-        private string playerO = "O";
         public string Turn = "X";
-        private bool yourTurn = false;
         public bool won = false;
         public bool newgame = true;
         internal Button[] buttons = new Button[9];
@@ -31,14 +28,14 @@ namespace Server_TTO
         protected internal void AddConnection(ClientObject clientObject)
         {
             clients.Add(clientObject);
+
         }
         protected internal void RemoveConnection(string id)
         {
             // получаем по id закрытое подключение
             ClientObject client = clients.FirstOrDefault(c => c.Id == id);
             // и удаляем его из списка подключений
-            if (client != null)
-                clients.Remove(client);
+            clients.Remove(client);
         }
         // прослушивание входящих подключений
         protected internal void Listen()
@@ -55,10 +52,8 @@ namespace Server_TTO
                         TcpClient tcpClient = tcpListener.AcceptTcpClient();
                         ClientObject clientObject = new ClientObject(tcpClient, this, "X");
                         Thread clientThread = new Thread(new ThreadStart(clientObject.Process));
-                        clientThread.Start();
-                        
+                        clientThread.Start();                        
                         Console.WriteLine(clients[0].type);
-                        //UniversalMessage("Ваш ход", 0);
                         player++;
                     }
                     if (player == 1)
@@ -67,7 +62,6 @@ namespace Server_TTO
                         ClientObject clientObject = new ClientObject(tcpClient, this, "O");
                         Thread clientThread = new Thread(new ThreadStart(clientObject.Process));
                         clientThread.Start();
-                        //UniversalMessage("Ждите",1);
                         Console.WriteLine(clients[1].type);
                         player++;
                     }
@@ -80,7 +74,7 @@ namespace Server_TTO
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Disconnect();
+                //Disconnect();
             }
         }
 
@@ -92,42 +86,21 @@ namespace Server_TTO
             {
                 if (clients[i].Id != id) // если id клиента не равно id отправляющего
                 {
-                    clients[i].Stream.Write(data, 0, data.Length); //передача данных
+                    if (clients[i] != null)
+                        clients[i].Stream.Write(data, 0, data.Length); //передача данных
                 }
             }
         }
         protected internal void UniversalMessage(string message,int i)
         {
             byte[] data = Encoding.Unicode.GetBytes(message);
-                    clients[i].Stream.Write(data, 0, data.Length); //передача данных
+            if (clients[i] != null)
+                clients[i].Stream.Write(data, 0, data.Length); //передача данных
         }
-        /*protected internal void WonMessage(string message, string id)
-        {
-            byte[] data = Encoding.Unicode.GetBytes("Вы выиграли X");
-            for (int i = 0; i < clients.Count; i++)
-            {
-                if (clients[i].Id != id) // если id клиента не равно id отправляющего
-                {
-                    clients[i].Stream.Write(data, 0, data.Length); //передача данных
-                }
-            }
-        }
-        protected internal void LoseMessage(string message, string id)
-        {
-            byte[] data = Encoding.Unicode.GetBytes("Вы проиграли");
-            for (int i = 0; i < clients.Count; i++)
-            {
-                if (clients[i].Id != id) // если id клиента не равно id отправляющего
-                {
-                    clients[i].Stream.Write(data, 0, data.Length); //передача данных
-                }
-            }
-        }*/
         // отключение всех клиентов
         protected internal void Disconnect()
         {
             tcpListener.Stop(); //остановка сервера
-
             for (int i = 0; i < clients.Count; i++)
             {
                 clients[i].Close(); //отключение клиента
@@ -136,26 +109,31 @@ namespace Server_TTO
         }
         protected internal void ClearTable()
         {
-            for (int i = 0; i < buttons.Length; i++)
+            if (player != 0)
             {
-                buttons[i].Text = "";
-            }
-            byte[] data = Encoding.Unicode.GetBytes("clear");            
-            for (int i = 0; i < clients.Count; i++)
-            {
-                clients[i].Stream.Write(data, 0, data.Length); //передача данных
-            }
-            Thread.Sleep(50);
-            if (won)
-            {
-                data = Encoding.Unicode.GetBytes("Победили " + Turn);
+                for (int i = 0; i < buttons.Length; i++)
+                {
+                    buttons[i].Text = "";
+                }
+                byte[] data = Encoding.Unicode.GetBytes("clear");
                 for (int i = 0; i < clients.Count; i++)
                 {
-                    clients[i].Stream.Write(data, 0, data.Length); //передача данных
+                        if(clients[i]!=null)
+                             clients[i].Stream.Write(data, 0, data.Length); //передача данных
                 }
+                Thread.Sleep(50);
+                if (won)
+                {
+                    data = Encoding.Unicode.GetBytes("Победили " + Turn);
+                    for (int i = 0; i < clients.Count; i++)
+                    {
+                        if (clients[i] != null)
+                            clients[i].Stream.Write(data, 0, data.Length); //передача данных
+                    }
+                }
+                Thread.Sleep(50);
+                won = false;
             }
-            Thread.Sleep(50);
-            won = false;          
         }
         protected internal void Win()
         {

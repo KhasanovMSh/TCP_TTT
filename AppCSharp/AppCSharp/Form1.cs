@@ -18,10 +18,11 @@ namespace AppCSharp
     public partial class Form1 : Form
     {
         private string type;
+        private bool con=false;
         static string I;
         static string V;
         static string userName;
-        private const string host = "127.0.0.1";
+        private string host;
         private const int port = 8888;
         static TcpClient client;
         static NetworkStream stream;
@@ -29,8 +30,6 @@ namespace AppCSharp
         public Form1()
         {
             InitializeComponent();
-            string ip = new WebClient().DownloadString("https://api.ipify.org");
-            textBox3.Text = ip.ToString(); 
         }
         static void SendMessage(object sender)
         {
@@ -55,7 +54,6 @@ namespace AppCSharp
                     }
                     while (stream.DataAvailable);
                     string message = builder.ToString();
-                    Console.WriteLine(message);
                     switch (message)
                     {
                         case "clear":
@@ -97,44 +95,7 @@ namespace AppCSharp
                                 type = "O";
                                 break;
                             }
-                    }
-                    /* if (message == "clear")
-                     {
-                         clearButtons();
-                     }
-                     else if (message == "won")
-                     {
-                         MessageBox.Show("Вы выиграли");
-                         clearButtons();
-                     }
-                     else if (message == "lose")
-                     {
-                         MessageBox.Show("Вы проиграли");
-                         clearButtons();
-                     }
-                     else if (message == "Ваш ход")
-                     {
-                         label1.Text = message;
-                         for (int i = 0; i < buttons.Length / 3; i++)
-                         {
-                             for (int j = 0; j < buttons.Length / 3; j++)
-                             {            
-                                     buttons[i, j].Enabled = true;
-                             }
-                         }
-                     }
-                     else if (message == "Ждите")
-                     {
-                         label1.Text = message;
-                         for (int i = 0; i < buttons.Length / 3; i++)
-                         {
-                             for (int j = 0; j < buttons.Length / 3; j++)
-                             {
-                                     buttons[i, j].Enabled = false;
-                             }
-                         }
-                     }
-                     else*/
+                    }                 
                     if (message.Contains("Победили"))
                     {
                         for (int i = 0; i < 3; i++)
@@ -180,6 +141,12 @@ namespace AppCSharp
                 client.Close();//отключение клиента
             Environment.Exit(0); //завершение процесса
         }
+        static void LogOut()
+        {
+            string message = "logout";
+            byte[] data = Encoding.Unicode.GetBytes(message);
+            stream.Write(data, 0, data.Length); 
+        }
         private void setButtons()
         {
             for (int i = 0; i < 3; i++)
@@ -188,7 +155,6 @@ namespace AppCSharp
                 {
                     Console.WriteLine(buttons[i, j].Name);
                     buttons[i, j].Location = new Point(12 + 206 * j, 12 + 206 * i);
-                    //buttons[i, j].Click += button1_Click;
                     buttons[i, j].Font = new Font(new FontFamily("Microsoft Sans Serif"), 138);
                     buttons[i, j].Text = "";
                     this.Controls.Add(buttons[i, j]);
@@ -209,32 +175,22 @@ namespace AppCSharp
         private void button1_Click(object sender, EventArgs e)
         {
             sender.GetType().GetProperty("Text").SetValue(sender, type);
-            /*switch (player)
-            {
-                case 1:
-                    sender.GetType().GetProperty("Text").SetValue(sender, type);
-                    player = 0;
-                    //label1.Text = "Текущий ход: Игрок 2";
-                    break;
-                case 0:
-                    sender.GetType().GetProperty("Text").SetValue(sender, "o");
-                    player = 1;
-                    //label1.Text = "Текущий ход: Игрок 1";
-                    break;
-            }*/
             sender.GetType().GetProperty("Enabled").SetValue(sender, false);
             SendMessage(sender);
         }       
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Disconnect();
+            if (con)
+            {
+                LogOut();
+                Disconnect();
+            }
         }
-
         private void Input_Click(object sender, EventArgs e)
         {
             userName=textBox1.Text;
-            //host=textBox2.Text;
+            host=textBox2.Text;
             client = new TcpClient();
             try
             {
@@ -248,15 +204,11 @@ namespace AppCSharp
                 // запускаем новый поток для получения данных
                 Thread receiveThread = new Thread(new ThreadStart(ReceiveMessage));
                 receiveThread.Start(); //старт потока
-                //SendMessage();
+                con = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                // Disconnect();
             }
             this.Height = 700;
             this.Width = 900;           
@@ -273,18 +225,13 @@ namespace AppCSharp
             setButtons();
         }
 
-       
-
         private void buttonPlay_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < 3; i++)
+            if (con)
             {
-                for(int j = 0; j < 3; j++)
-                {
-                    buttons[i, j].Text = "";
-                    buttons[i, j].Enabled = true;
-                }
-            }
+                LogOut();
+                Disconnect();
+            }           
         }
     }
 }
