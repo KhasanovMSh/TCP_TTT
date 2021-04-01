@@ -41,6 +41,7 @@ namespace Server_TTO
                 {
                     try
                     {
+                        Console.WriteLine("Кол-во игроков"+server.player);
                         if (message.Contains("logout"))
                         {
                             server.ClearTable();

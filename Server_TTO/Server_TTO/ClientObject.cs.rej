@@ -1,0 +1,9 @@
+diff a/Server_TTO/Server_TTO/ClientObject.cs b/Server_TTO/Server_TTO/ClientObject.cs	(rejected hunks)
+@@ -41,7 +41,6 @@
+                 {
+                     try
+                     {
+-                        Console.WriteLine("Кол-во игроков"+server.player);
+                         if (message.Contains("logout"))
+                         {
+                             server.ClearTable();
